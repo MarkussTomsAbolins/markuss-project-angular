@@ -36,16 +36,16 @@ export class CreateTaskComponent {
     this.taskList?.tasks.push(task);
   };
 
-  get title(){
+  get title() {
     return this.taskForm.get("title");
   };
-  get status(){
+  get status() {
     return this.taskForm.get("status");
   };
-  get description(){
+  get description() {
     return this.taskForm.get("description");
   };
-  get type(){
+  get type() {
     return this.taskForm.get("type");
   }
 }

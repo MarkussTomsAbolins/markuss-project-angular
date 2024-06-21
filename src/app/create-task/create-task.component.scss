@@ -1,4 +1,3 @@
-
 $background-color: #333;
 
 .create-task-fields {
@@ -8,28 +7,28 @@ $background-color: #333;
     max-width: 60%;
 }
 
-.create-task-header{
+.create-task-header {
     background-color: bisque;
     color: #333;
     min-height: 50px;
     text-align: center;
 }
 
-button{
+button {
     padding: 1%;
     border-radius: 10%;
 }
 
-.description-field{
+.description-field {
     min-width: 90px;
     min-height: 100px;
 }
 
-.validation-warning{
+.validation-warning {
     color: red;
 }
 
-.warning-parent{
+.warning-parent {
     background-color: darkgray;
     max-width: max-content;
     padding-left: 5%;
