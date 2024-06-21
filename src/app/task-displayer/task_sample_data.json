@@ -1,46 +1,52 @@
 {
     "tasks":[
         {
-            "Title":"task1",
-            "Description":"Description1",
-            "Type":"epic",
-            "CreatedOn":"2012-04-23T18:25:43.511Z",
-            "Status":"open"
+            "title":"task1",
+            "description":"description1",
+            "type":"epic",
+            "createdOn":"2012-04-23T18:25:43.511Z",
+            "status":"open",
+            "id":1
         },
         {
-            "Title":"task2",
-            "Description":"Description2",
-            "Type":"epic",
-            "CreatedOn":"2012-04-23T18:25:43.511Z",
-            "Status":"open"
+            "title":"task2",
+            "description":"description2",
+            "type":"epic",
+            "createdOn":"2012-04-23T18:25:43.511Z",
+            "status":"open",
+            "id":2
         },
         {
-            "Title":"task3",
-            "Description":"Description3",
-            "Type":"epic",
-            "CreatedOn":"2012-04-23T18:25:43.511Z",
-            "Status":"open"
+            "title":"task3",
+            "description":"description3",
+            "type":"epic",
+            "createdOn":"2012-04-23T18:25:43.511Z",
+            "status":"open",
+            "id":3
         },
         {
-            "Title":"task4",
-            "Description":"Description4",
-            "Type":"epic",
-            "CreatedOn":"2012-04-23T18:25:43.511Z",
-            "Status":"open"
+            "title":"task4",
+            "description":"description4",
+            "type":"epic",
+            "createdOn":"2012-04-23T18:25:43.511Z",
+            "status":"open",
+            "id":4
         },
         {
-            "Title":"task5",
-            "Description":"Description5",
-            "Type":"epic",
-            "CreatedOn":"2012-04-23T18:25:43.511Z",
-            "Status":"open"
+            "title":"task5",
+            "description":"description5",
+            "type":"epic",
+            "createdOn":"2012-04-23T18:25:43.511Z",
+            "status":"open",
+            "id":5
         },
         {
-            "Title":"task6",
-            "Description":"Description6",
-            "Type":"epic",
-            "CreatedOn":"2012-04-23T18:25:43.511Z",
-            "Status":"open"
+            "title":"task6",
+            "description":"description6",
+            "type":"epic",
+            "createdOn":"2012-04-23T18:25:43.511Z",
+            "status":"open",
+            "id":6
         }
     ]
 }

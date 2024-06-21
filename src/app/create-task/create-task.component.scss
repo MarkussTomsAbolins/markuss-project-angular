@@ -1,14 +1,14 @@
 
 $background-color: #333;
 
-.createTaskFields {
+.create-task-fields {
     background-color: $background-color;
     border-radius: 1%;
     color: white;
     max-width: 60%;
 }
 
-.CreateTaskHeader{
+.create-task-header{
     background-color: bisque;
     color: #333;
     min-height: 50px;
@@ -20,7 +20,7 @@ button{
     border-radius: 10%;
 }
 
-.DescriptionField{
+.description-field{
     min-width: 90px;
     min-height: 100px;
 }

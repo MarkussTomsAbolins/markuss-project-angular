@@ -1,9 +1,10 @@
 export interface taskData {
-    Title: string;
-    Description: string;
-    Type: string;
-    CreatedOn: Date;
-    Status: string;
+    title: string;
+    description: string;
+    type: string;
+    createdOn: Date;
+    status: string;
+    id: number;
 }
 
 export interface taskList{

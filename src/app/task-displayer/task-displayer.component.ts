@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as TaskJson from './task_sample_data.json';
 import { CommonModule } from '@angular/common';
+import { taskData } from '../taskdata';
 
 @Component({
   selector: 'app-task-displayer',
@@ -10,10 +11,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './task-displayer.component.scss'
 })
 export class TaskDisplayerComponent {
-  TaskList = TaskJson;
+  taskList = TaskJson;
 
-  DeleteTask(t:any){
-    const index = this.TaskList.tasks.indexOf(t);
-    this.TaskList.tasks.splice(index, 1);
+  DeleteTask(id:number){
+    const index = this.taskList.tasks.findIndex(t=>t.id === id);
+    this.taskList.tasks.splice(index, 1);
   }
 }
