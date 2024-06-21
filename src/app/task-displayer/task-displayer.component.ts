@@ -13,8 +13,8 @@ import { taskData } from '../taskdata';
 export class TaskDisplayerComponent {
   taskList = TaskJson;
 
-  DeleteTask(id:number){
-    const index = this.taskList.tasks.findIndex(t=>t.id === id);
+  deleteTask(id: number) {
+    const index = this.taskList.tasks.findIndex(t => t.id === id);
     this.taskList.tasks.splice(index, 1);
   }
 }
