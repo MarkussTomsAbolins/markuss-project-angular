@@ -1,0 +1,29 @@
+.task-header{
+    background-color: brown;
+    height: 50px;
+    color: white;
+    font-size: larger;
+    padding: 15px;
+    max-width: 60%;
+    text-align: center;
+}
+
+.task-row{
+    background-color:gainsboro;
+}
+
+.delete-button{
+    margin: 15px;
+}
+
+th{
+    min-width: 150px;
+    width: fit-content;
+}
+td{
+    text-align: center;
+    padding: 5px;
+}
+table{
+    width: 60%;
+}

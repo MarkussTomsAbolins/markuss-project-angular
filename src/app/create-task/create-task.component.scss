@@ -1,0 +1,26 @@
+
+$background-color: #333;
+
+.create-task-fields {
+    background-color: $background-color;
+    border-radius: 1%;
+    color: white;
+    max-width: 60%;
+}
+
+.create-task-header{
+    background-color: bisque;
+    color: #333;
+    min-height: 50px;
+    text-align: center;
+}
+
+button{
+    padding: 1%;
+    border-radius: 10%;
+}
+
+.description-field{
+    min-width: 90px;
+    min-height: 100px;
+}

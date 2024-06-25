@@ -1,0 +1,21 @@
+<div class="task-header">
+    <p>Current tasks:</p>
+</div>
+<table class="task-table">
+    <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Type</th>
+        <th>Created On</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    <tr *ngFor="let task of taskList.tasks" class="task-row">
+        <td>{{task.title}}</td>
+        <td>{{task.status}}</td>
+        <td>{{task.type}}</td>
+        <td>{{task.createdOn}}</td>
+        <td>{{task.description}}</td>
+        <td> <button class="delete-button" (click)="deleteTask(task.id)">Delete</button> </td>
+    </tr>
+</table>

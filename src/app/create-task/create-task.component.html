@@ -1,0 +1,23 @@
+<div class="create-task-fields">
+    <div class="create-task-header">
+        <p>
+            Create new task here!
+        </p>
+    </div>
+    <form [formGroup]="taskForm">
+        <label for="title">Title: </label>
+        <input id="title" type="text" formControlName="title">
+        <br>
+        <label for="description">Description: </label> <br>
+        <textarea id="description" type="text" formControlName="description" class="description-field"></textarea>
+        <br>
+        <label for="type">Type: </label>
+        <input id="type" type="text" formControlName="type">
+        <br>
+        <label for="status">Status: </label>
+        <input id="status" type="text" formControlName="status">
+
+    </form>
+    <br>
+    <button type="button" (click)="createTask()" [disabled]="taskForm.invalid">Create Task</button>
+</div>
