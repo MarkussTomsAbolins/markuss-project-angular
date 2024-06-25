@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { taskData, taskList } from '../taskdata';
-import { generate } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-task',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './create-task.component.html',
   styleUrl: './create-task.component.scss'
 })
@@ -35,6 +35,19 @@ export class CreateTaskComponent {
 
     this.taskList?.tasks.push(task);
   };
+
+  get title() {
+    return this.taskForm.get("title");
+  };
+  get status() {
+    return this.taskForm.get("status");
+  };
+  get description() {
+    return this.taskForm.get("description");
+  };
+  get type() {
+    return this.taskForm.get("type");
+  }
 }
 
 
