@@ -19,5 +19,20 @@
 
     </form>
     <br>
+    <div *ngIf="taskForm.touched" class="warning-parent">
+        <div *ngIf="title?.hasError('required')" class="validation-warning">
+            Title is required!
+        </div>
+        <div *ngIf="description?.hasError('required')" class="validation-warning">
+            Description is required!
+        </div>
+        <div *ngIf="type?.hasError('required')" class="validation-warning">
+            Type is required!
+        </div>
+        <div *ngIf="status?.hasError('required')" class="validation-warning">
+            Status is required!
+        </div>
+    </div>
+    <br>
     <button type="button" (click)="createTask()" [disabled]="taskForm.invalid">Create Task</button>
 </div>
