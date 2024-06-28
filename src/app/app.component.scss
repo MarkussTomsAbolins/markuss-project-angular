@@ -1,0 +1,17 @@
+.header{
+    background-color: grey;
+    width: 100%;
+    min-height: 65px;
+    padding: 30px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 5px;
+}
+
+.header-button{
+    padding: 20px;
+    background-color: brown;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
