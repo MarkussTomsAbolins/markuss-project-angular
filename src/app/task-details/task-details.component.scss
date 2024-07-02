@@ -1,0 +1,38 @@
+.task-parent {
+    background-color: gray;
+    max-width: 70%;
+    min-height: 500px;
+    display: flex;
+}
+
+.task-left {
+    display: inline-block;
+    width: 80%;
+    min-height: 90%;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.task-right {
+    display: inline-block;
+    background-color: lightgray;
+    width: 20%;
+    min-height: 90%;
+    float: right;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: larger;
+}
+
+.title-header {
+    background-color: lightgray;
+    font-size: xx-large;
+    text-align: center;
+    min-height: 15%;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.description {
+    background-color: lightgray;
+}

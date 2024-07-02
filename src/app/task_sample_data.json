@@ -2,7 +2,7 @@
     "tasks":[
         {
             "title":"task1",
-            "description":"description1",
+            "description":"description1 description1 description1 description1description1 description1 description1description1",
             "type":"epic",
             "createdOn":"2012-04-23T18:25:43.511Z",
             "status":"open",

@@ -11,11 +11,13 @@
         <th>Actions</th>
     </tr>
     <tr *ngFor="let task of taskList.tasks" class="task-row">
-        <td>{{task.title}}</td>
+        <td><a [routerLink]="['/task-details', task.id]" routerLinkActive="active" ariaCurrentWhenActive="page" class="header-button">{{task.title}}</a></td>
         <td>{{task.status}}</td>
         <td>{{task.type}}</td>
         <td>{{task.createdOn}}</td>
         <td>{{task.description}}</td>
-        <td> <button class="delete-button" (click)="deleteTask(task.id)">Delete</button> </td>
+        <td>
+            <button class="delete-button" (click)="deleteTask(task.id)">Delete</button>
+        </td>
     </tr>
 </table>

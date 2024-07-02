@@ -1,12 +1,12 @@
-export interface taskData {
+export interface TaskData {
     title: string;
     description: string;
     type: string;
-    createdOn: Date;
+    createdOn: string;
     status: string;
     id: number;
 }
 
-export interface taskList{
-    tasks: Array<taskData>;
+export interface TaskList{
+    tasks: TaskData[];
 }
