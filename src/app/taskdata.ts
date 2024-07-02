@@ -8,5 +8,5 @@ export interface TaskData {
 }
 
 export interface TaskList{
-    tasks: Array<TaskData>;
+    tasks: TaskData[];
 }
