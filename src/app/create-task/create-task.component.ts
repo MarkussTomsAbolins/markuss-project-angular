@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { taskData, taskList } from '../taskdata';
+import { TaskData, TaskList } from '../taskdata';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CreateTaskComponent {
 
-  taskList: taskList = {
+  taskList: TaskList = {
     tasks: []
   };
 
@@ -24,7 +24,7 @@ export class CreateTaskComponent {
   });
 
   createTask() {
-    let task: taskData = {
+    let task: TaskData = {
       createdOn: new Date().toDateString(),
       title: this.taskForm.get("title")?.value ?? "-",
       description: this.taskForm.get("description")?.value ?? "-",
