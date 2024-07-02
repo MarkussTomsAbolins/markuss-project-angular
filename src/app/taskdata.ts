@@ -2,7 +2,7 @@ export interface taskData {
     title: string;
     description: string;
     type: string;
-    createdOn: Date;
+    createdOn: string;
     status: string;
     id: number;
 }

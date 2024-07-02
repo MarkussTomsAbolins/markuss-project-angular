@@ -25,7 +25,7 @@ export class CreateTaskComponent {
 
   createTask() {
     let task: taskData = {
-      createdOn: new Date(),
+      createdOn: new Date().toDateString(),
       title: this.taskForm.get("title")?.value ?? "-",
       description: this.taskForm.get("description")?.value ?? "-",
       status: this.taskForm.get("status")?.value ?? "-",
