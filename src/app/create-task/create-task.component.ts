@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TaskData, TaskList } from '../taskdata';
 import { CommonModule } from '@angular/common';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-create-task',
@@ -11,6 +12,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './create-task.component.scss'
 })
 export class CreateTaskComponent {
+
+  constructor(private taskService: TaskService) { };
 
   taskList: TaskList = {
     tasks: []
@@ -33,7 +36,7 @@ export class CreateTaskComponent {
       id: Math.floor(Math.random() * (999999 - 9999) + 9999),
     }
 
-    this.taskList?.tasks.push(task);
+    this.taskService.createTask(task);
   };
 
   get title() {
