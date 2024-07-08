@@ -1,30 +1,31 @@
 import { Injectable } from '@angular/core';
 import * as TaskJson from './task_sample_data.json';
-import { TaskData } from './taskdata';
+import { TaskData, TaskList } from './taskdata';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  taskList = TaskJson;
+  taskList: TaskList["tasks"];
 
-  constructor() { }
+  constructor() {
+    this.taskList = TaskJson.tasks;
+   }
 
   getAllTasks() {
-    return this.taskList.tasks;
+    return this.taskList;
   }
 
   deleteTask(id: number) {
-    const index = this.taskList.tasks.findIndex(t => t.id === id);
-    this.taskList.tasks.splice(index, 1);
+    this.taskList = this.taskList.filter(item => item.id !== id);
   }
 
   getTaskByID(id: string) {
-    return this.taskList.tasks.find(t => t.id == Number(id)) ?? null;
+    return this.taskList.find(t => t.id == Number(id)) ?? null;
   }
 
   createTask(task: TaskData) {
-    this.taskList.tasks.push(task);
+    this.taskList.push(task);
   }
 }
