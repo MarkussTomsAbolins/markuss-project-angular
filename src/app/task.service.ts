@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
 import * as TaskJson from './task_sample_data.json';
 import { TaskData, TaskList } from './taskdata';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  taskList: TaskList["tasks"];
+  taskListSubject: BehaviorSubject<TaskData[]> = new BehaviorSubject<TaskData[]>(TaskJson.tasks);
 
-  constructor() {
-    this.taskList = TaskJson.tasks;
-   }
+  taskList$: Observable<TaskData[]> = this.taskListSubject.asObservable();
 
-  getAllTasks() {
-    return this.taskList;
+  get taskList() {
+    return this.taskListSubject.getValue();
+  }
+
+  set taskList(newTasks: TaskData[]) {
+    this.taskListSubject.next(newTasks);
   }
 
   deleteTask(id: number) {

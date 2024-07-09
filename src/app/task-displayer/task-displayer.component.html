@@ -10,7 +10,7 @@
         <th>Description</th>
         <th>Actions</th>
     </tr>
-    <tr *ngFor="let task of taskList.tasks" class="task-row">
+    <tr *ngFor="let task of taskList$ | async" class="task-row">
         <td><a [routerLink]="['/task-details', task.id]" routerLinkActive="active" ariaCurrentWhenActive="page" class="header-button">{{task.title}}</a></td>
         <td>{{task.status}}</td>
         <td>{{task.type}}</td>

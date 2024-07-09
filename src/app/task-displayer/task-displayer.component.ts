@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import * as TaskJson from '../task_sample_data.json';
 import { CommonModule } from '@angular/common';
 import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 import { TaskService } from '../task.service';
+import { Observable } from 'rxjs';
+import { TaskData } from '../taskdata';
 
 
 @Component({
@@ -13,11 +15,13 @@ import { TaskService } from '../task.service';
   styleUrl: './task-displayer.component.scss'
 })
 export class TaskDisplayerComponent {
-  constructor(private taskService: TaskService) { };
+  
+  taskList$: Observable<TaskData[]> = this.taskService.taskList$;
 
-  taskList = TaskJson;
+  constructor(private taskService: TaskService) { };
 
   deleteTask(id: number) {
     this.taskService.deleteTask(id);
   }
+  
 }
