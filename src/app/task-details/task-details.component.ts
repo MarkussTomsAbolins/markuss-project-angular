@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as TaskJson from '../task_sample_data.json';
-import { RouterModule, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { TaskData } from '../taskdata';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-task-details',
@@ -11,15 +12,16 @@ import { TaskData } from '../taskdata';
   styleUrl: './task-details.component.scss',
 
 })
+
 export class TaskDetailsComponent implements OnInit {
-  constructor(private route: ActivatedRoute) { };
+  constructor(private route: ActivatedRoute, private taskService: TaskService) { };
 
   taskList = TaskJson;
   curTask: TaskData | null = null;
-  
+
   ngOnInit() {
     var id = this.route.snapshot.params['id'];
-    this.curTask = this.taskList.tasks.find(t => t.id == Number(id)) ?? null;
+    this.curTask = this.taskService.getTaskByID(id);
   }
 
 }
