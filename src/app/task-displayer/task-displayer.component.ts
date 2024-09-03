@@ -18,10 +18,13 @@ export class TaskDisplayerComponent {
   
   taskList$: Observable<TaskData[]> = this.taskService.taskList$;
 
+  
+
   constructor(private taskService: TaskService) { };
 
   deleteTask(id: number) {
     this.taskService.deleteTask(id);
   }
+
   
 }

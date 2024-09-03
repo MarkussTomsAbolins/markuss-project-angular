@@ -14,14 +14,20 @@ import { TaskService } from '../task.service';
 })
 
 export class TaskDetailsComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private taskService: TaskService) { };
-
-  taskList = TaskJson;
   curTask: TaskData | null = null;
 
-  ngOnInit() {
-    var id = this.route.snapshot.params['id'];
-    this.curTask = this.taskService.getTaskByID(id);
-  }
+  constructor(private route: ActivatedRoute, private taskService: TaskService) { }
 
+  ngOnInit() {
+    const id = this.route.snapshot.params['id'];
+    this.taskService.getTaskByID(id).subscribe({
+      next: (task) => {
+        this.curTask = task;
+      },
+      error: (error) => {
+        console.error('Error fetching task:', error);
+        this.curTask = null;
+      }
+    });
+  }
 }
