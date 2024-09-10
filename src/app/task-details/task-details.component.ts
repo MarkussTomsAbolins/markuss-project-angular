@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as TaskJson from '../task_sample_data.json';
 import { ActivatedRoute } from '@angular/router';
 import { TaskData } from '../taskdata';
 import { TaskService } from '../task.service';
+import { takeUntil } from "rxjs/operators"
+import { Subject } from "rxjs"
 
 @Component({
   selector: 'app-task-details',
@@ -14,19 +15,19 @@ import { TaskService } from '../task.service';
 })
 
 export class TaskDetailsComponent implements OnInit {
+  componentDestroyed$: Subject<boolean> = new Subject();
   curTask: TaskData | null = null;
 
   constructor(private route: ActivatedRoute, private taskService: TaskService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
-    this.taskService.getTaskByID(id).subscribe({
+    this.taskService.getTaskByID(id).pipe(takeUntil(this.componentDestroyed$)).subscribe({
       next: (task) => {
         this.curTask = task;
       },
       error: (error) => {
         console.error('Error fetching task:', error);
-        this.curTask = null;
       }
     });
   }

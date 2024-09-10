@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-//import * as TaskJson from './task_sample_data.json';
 import { TaskData, TaskList } from './taskdata';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
+import { environment } from './../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,8 @@ export class TaskService {
 
   taskList$: Observable<TaskData[]> = this.taskListSubject.asObservable();
 
+  url = environment.apiUrl;
   constructor(private http: HttpClient) {
-    this.loadTasksFromAPI();
   }
 
   get taskList() {
@@ -27,7 +27,7 @@ export class TaskService {
   }
 
   deleteTask(id: number) {
-    this.http.delete(`http://localhost:3001/removeTask/${id}`)
+    this.http.delete(this.url+`/removeTask/${id}`)
       .pipe(
         catchError((error) => {
           console.error('Error deleting task:', error);
@@ -45,7 +45,7 @@ export class TaskService {
   }
 
   getTaskByID(id: string): Observable<TaskData | null> {
-    return this.http.get<TaskData>(`http://localhost:3001/task/${id}`)
+    return this.http.get<TaskData>(this.url + `/task/${id}`)
       .pipe(
         catchError((error) => {
           console.error('Error fetching task:', error);
@@ -55,7 +55,7 @@ export class TaskService {
   }
 
   createTask(task: TaskData) {
-    this.http.post(`http://localhost:3001/createTask`, task)
+    this.http.post(this.url + `/createTask`, task)
       .pipe(
         catchError((error) => {
           console.error('Error creating task:', error);
@@ -72,8 +72,8 @@ export class TaskService {
       });
   }
 
-  private loadTasksFromAPI() {
-    this.http.get<TaskList>("http://localhost:3001/allTasks/")
+  loadTasksFromAPI() {
+    this.http.get<TaskList>(this.url + "/allTasks/")
       .pipe(
         catchError((error) => {
           console.error('Error fetching tasks from API:', error);

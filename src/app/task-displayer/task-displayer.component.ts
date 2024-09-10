@@ -20,7 +20,9 @@ export class TaskDisplayerComponent {
 
   
 
-  constructor(private taskService: TaskService) { };
+  constructor(private taskService: TaskService) {
+    taskService.loadTasksFromAPI();
+  };
 
   deleteTask(id: number) {
     this.taskService.deleteTask(id);
