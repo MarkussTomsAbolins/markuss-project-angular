@@ -15,18 +15,26 @@ import { TaskData } from '../taskdata';
   styleUrl: './task-displayer.component.scss'
 })
 export class TaskDisplayerComponent {
-  
+
   taskList$: Observable<TaskData[]> = this.taskService.taskList$;
 
-  
+
 
   constructor(private taskService: TaskService) {
-    taskService.loadTasksFromAPI();
+    this.taskService.taskList$.subscribe({
+      next: (tasks: TaskData[]) => {
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
+
+    this.taskService.loadTasksFromAPI();
   };
 
   deleteTask(id: number) {
     this.taskService.deleteTask(id);
   }
 
-  
+
 }

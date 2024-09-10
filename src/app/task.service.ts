@@ -4,6 +4,7 @@ import { BehaviorSubject, from, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { environment } from './../environments/environment';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,6 @@ export class TaskService {
 
   taskList$: Observable<TaskData[]> = this.taskListSubject.asObservable();
 
-  url = environment.apiUrl;
   constructor(private http: HttpClient) {
   }
 
@@ -27,7 +27,7 @@ export class TaskService {
   }
 
   deleteTask(id: number) {
-    this.http.delete(this.url+`/removeTask/${id}`)
+    this.http.delete(environment.apiUrl + `/removeTask/${id}`)
       .pipe(
         catchError((error) => {
           console.error('Error deleting task:', error);
@@ -45,7 +45,7 @@ export class TaskService {
   }
 
   getTaskByID(id: string): Observable<TaskData | null> {
-    return this.http.get<TaskData>(this.url + `/task/${id}`)
+    return this.http.get<TaskData>(environment.apiUrl + `/task/${id}`)
       .pipe(
         catchError((error) => {
           console.error('Error fetching task:', error);
@@ -55,7 +55,7 @@ export class TaskService {
   }
 
   createTask(task: TaskData) {
-    this.http.post(this.url + `/createTask`, task)
+    this.http.post(environment.apiUrl + `/createTask`, task)
       .pipe(
         catchError((error) => {
           console.error('Error creating task:', error);
@@ -72,24 +72,19 @@ export class TaskService {
       });
   }
 
-  loadTasksFromAPI() {
-    this.http.get<TaskList>(this.url + "/allTasks/")
-      .pipe(
-        catchError((error) => {
-          console.error('Error fetching tasks from API:', error);
-          return [];
-        })
-      )
-      .subscribe({
-        next: (response: TaskList) => {
-          this.taskList = response.tasks;
-        },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => {
-          console.log('Task loading complete');
-        }
-      });
+  async loadTasksFromAPI() {
+    try {
+      const response: TaskList = await firstValueFrom(
+        this.http.get<TaskList>(environment.apiUrl + "/allTasks/").pipe(
+          catchError((error) => {
+            console.error('Error from BE:', error);
+            throw error;
+          })
+        )
+      );
+      this.taskList = response.tasks;
+    } catch (error) {
+      console.log('Error:', error);
+    }
   }
 }
