@@ -1,7 +1,8 @@
 <div class="task-header">
     <p>Current tasks:</p>
 </div>
-<table class="task-table">
+
+<table *ngIf="(taskList$ | async)?.tasks as tasks; else loading" class="task-table">
     <tr>
         <th>Title</th>
         <th>Status</th>
@@ -10,7 +11,7 @@
         <th>Description</th>
         <th>Actions</th>
     </tr>
-    <tr *ngFor="let task of taskList$ | async" class="task-row">
+    <tr *ngFor="let task of tasks" class="task-row">
         <td><a [routerLink]="['/task-details', task.id]" routerLinkActive="active" ariaCurrentWhenActive="page" class="header-button">{{task.title}}</a></td>
         <td>{{task.status}}</td>
         <td>{{task.type}}</td>
@@ -21,3 +22,11 @@
         </td>
     </tr>
 </table>
+
+<ng-template #loading>
+    <p>Loading tasks...</p>
+</ng-template>
+
+<ng-container *ngIf="(taskList$ | async)?.tasks?.length === 0">
+    <p>No tasks available</p>
+</ng-container>

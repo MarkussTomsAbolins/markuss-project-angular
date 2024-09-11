@@ -1,10 +1,9 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
-import * as TaskJson from '../task_sample_data.json';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 import { TaskService } from '../task.service';
 import { Observable } from 'rxjs';
-import { TaskData } from '../taskdata';
+import { TaskList } from '../taskdata';
 
 
 @Component({
@@ -16,21 +15,11 @@ import { TaskData } from '../taskdata';
 })
 export class TaskDisplayerComponent {
 
-  taskList$: Observable<TaskData[]> = this.taskService.taskList$;
-
-
+  taskList$: Observable<TaskList>;
 
   constructor(private taskService: TaskService) {
-    this.taskService.taskList$.subscribe({
-      next: (tasks: TaskData[]) => {
-      },
-      error: (error) => {
-        console.error(error);
-      }
-    });
-
-    this.taskService.loadTasksFromAPI();
-  };
+    this.taskList$ = this.taskService.loadTasksFromAPI();
+  }
 
   deleteTask(id: number) {
     this.taskService.deleteTask(id);

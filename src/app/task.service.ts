@@ -4,7 +4,6 @@ import { BehaviorSubject, from, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { environment } from './../environments/environment';
-import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -72,19 +71,7 @@ export class TaskService {
       });
   }
 
-  async loadTasksFromAPI() {
-    try {
-      const response: TaskList = await firstValueFrom(
-        this.http.get<TaskList>(environment.apiUrl + "/allTasks/").pipe(
-          catchError((error) => {
-            console.error('Error from BE:', error);
-            throw error;
-          })
-        )
-      );
-      this.taskList = response.tasks;
-    } catch (error) {
-      console.log('Error:', error);
-    }
+  loadTasksFromAPI(): Observable<TaskList>{
+    return this.http.get<TaskList>(environment.apiUrl + "/allTasks/");
   }
 }
